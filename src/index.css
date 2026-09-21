@@ -1,0 +1,48 @@
+@import './styles/theme.css';
+
+/* base layout and minimal theme tokens */
+html, body, #root {
+  height: 100%;
+}
+
+@layer base {
+  /* NOTE: color tokens were historically defined in tailwind.config.cjs. We now keep CSS variables in src/styles/theme.css as the canonical source-of-truth. */
+  /* Color tokens are provided by src/styles/theme.css (canonical source-of-truth).
+     The duplicated :root block was removed to avoid drift. */
+
+  body {
+    background-color: var(--page-bg);
+    color: var(--brand);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6; /* slightly airier */
+    font-size: var(--font-size-base);
+    letter-spacing: -0.01em;
+    -webkit-font-feature-settings: "cv02" on;
+    font-feature-settings: "cv02" on;
+  }
+
+  a {
+    color: var(--accent);
+  }
+
+  a:hover {
+    color: #5b21b6;
+    text-decoration: underline;
+  }
+
+  /* helper container class used by Layout */
+  .app-container {
+    max-width: 56rem; /* slightly wider */
+    margin-left: auto;
+    margin-right: auto;
+    padding: calc(var(--space-6) + var(--space-2));
+  }
+
+  /* Apply root-level app class for index.html body */
+  .app-root {
+    background-color: var(--page-bg);
+    color: var(--brand);
+  }
+}

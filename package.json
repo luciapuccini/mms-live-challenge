@@ -1,0 +1,44 @@
+{
+  "name": "ai-live-coding-challenge",
+  "version": "0.1.0",
+  "packageManager": "pnpm@11.0.9",
+  "engines": {
+    "node": ">=22"
+  },
+  "private": true,
+  "author": "@parres-mms",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .ts,.tsx --max-warnings=0",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix"
+  },
+  "dependencies": {
+    "@apollo/client": "^4.1.9",
+    "graphql": "^16.14.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-router-dom": "^6.30.4"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^25.6.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.59.2",
+    "@typescript-eslint/parser": "^8.59.2",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.4.27",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "jest-environment-jsdom": "^30.4.1",
+    "typescript": "^6.0.2",
+    "vite": "^8.1.3",
+    "vitest": "^4.1.5"
+  }
+}

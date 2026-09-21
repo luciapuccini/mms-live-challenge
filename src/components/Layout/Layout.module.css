@@ -1,0 +1,38 @@
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 1.75rem; 
+  height: 1.75rem;
+  padding: var(--space-1);
+  border-radius: var(--radius-md);
+  background: var(--page-bg);
+  object-fit: contain;
+  margin-right: var(--space-2);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.container {
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+}
