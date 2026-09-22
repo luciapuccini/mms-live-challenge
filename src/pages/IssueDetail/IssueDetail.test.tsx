@@ -47,3 +47,17 @@ test("renders the issue of the number in the url", async () => {
     "https://github.com/facebook/react/issues/123",
   );
 });
+
+test("renders the markdown body as html, with links in a new tab", async () => {
+  renderWithMocks(mocksSuccess);
+  const body = await screen.findByTestId("issue-body");
+
+  // the markdown arrives as real elements, not raw marks
+  expect(body.querySelector("h2")).toHaveTextContent("First line");
+  expect(body.querySelector("li")).toHaveTextContent("Second line");
+  expect(body.querySelector("code")).toHaveTextContent("code");
+
+  const link = body.querySelector("a");
+  expect(link).toHaveAttribute("target", "_blank");
+  expect(link).toHaveAttribute("rel", "noreferrer");
+});

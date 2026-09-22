@@ -1,5 +1,125 @@
-/* the body is markdown text shown as plain text: keep the line breaks */
+/* the body is GitHub-rendered html: style the raw elements it emits */
 .body {
-  white-space: pre-wrap;
   margin-top: var(--space-3);
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.body > *:first-child {
+  margin-top: 0;
+}
+
+.body > *:last-child {
+  margin-bottom: 0;
+}
+
+.body h1,
+.body h2,
+.body h3,
+.body h4,
+.body h5,
+.body h6 {
+  margin: var(--space-6) 0 var(--space-3);
+  line-height: 1.3;
+  color: var(--brand);
+}
+
+.body h1 {
+  font-size: var(--font-size-xl);
+}
+.body h2 {
+  font-size: var(--font-size-lg);
+}
+.body h3,
+.body h4,
+.body h5,
+.body h6 {
+  font-size: 1rem;
+}
+
+.body p,
+.body ul,
+.body ol,
+.body blockquote,
+.body pre,
+.body table {
+  margin: 0 0 var(--space-4);
+}
+
+.body ul,
+.body ol {
+  padding-left: var(--space-6);
+}
+
+.body li {
+  margin-bottom: var(--space-1);
+}
+
+/* task lists: GitHub emits a disabled checkbox as the first child of the li */
+.body li input[type="checkbox"] {
+  margin-right: var(--space-2);
+  vertical-align: middle;
+}
+
+.body a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.body code {
+  padding: 0.15em 0.35em;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+}
+
+.body pre {
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.35);
+  overflow-x: auto;
+}
+
+.body pre code {
+  padding: 0;
+  background: none;
+  font-size: var(--font-size-sm);
+}
+
+.body blockquote {
+  padding-left: var(--space-4);
+  border-left: 3px solid var(--border);
+  color: var(--muted);
+}
+
+/* keep wide GitHub screenshots inside the card */
+.body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+.body table {
+  display: block;
+  border-collapse: collapse;
+  overflow-x: auto;
+}
+
+.body th,
+.body td {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.body th {
+  color: var(--muted-2);
+}
+
+.body hr {
+  margin: var(--space-6) 0;
+  border: 0;
+  border-top: 1px solid var(--border);
 }

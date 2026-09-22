@@ -15,7 +15,8 @@ export const mocksSuccess = [
             state: 'OPEN',
             createdAt: '2023-01-01T00:00:00Z',
             author: { __typename: 'User', login: 'alice' },
-            body: 'First line\nSecond line',
+            bodyHTML:
+              '<h2>First line</h2>\n<ul>\n<li>Second line with <code>code</code></li>\n</ul>\n<p><a href="https://example.com">a link</a></p>',
             url: 'https://github.com/facebook/react/issues/123'
           }
         }

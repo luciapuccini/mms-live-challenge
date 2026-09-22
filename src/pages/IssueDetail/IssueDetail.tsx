@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { useQuery } from "@apollo/client/react";
 import { useParams } from "react-router-dom";
 import { GET_ISSUE } from "@/graphql/getIssue";
@@ -12,6 +13,17 @@ export function IssueDetail(): JSX.Element {
   const { data, loading, error } = useQuery<GetIssueData>(GET_ISSUE, {
     variables: { number: Number(number) },
   });
+  const issue = data?.repository?.issue;
+  const bodyRef = useRef<HTMLDivElement>(null);
+
+  // the body html comes from GitHub, so its links need the same new-tab
+  // treatment as the "View on GitHub" link below
+  useEffect(() => {
+    bodyRef.current?.querySelectorAll("a").forEach((a) => {
+      a.target = "_blank";
+      a.rel = "noreferrer";
+    });
+  }, [issue?.bodyHTML]);
 
   if (loading)
     return (
@@ -26,7 +38,6 @@ export function IssueDetail(): JSX.Element {
       </div>
     );
 
-  const issue = data?.repository?.issue;
   if (!issue)
     return (
       <div data-testid="not-found-state" className={listStyles.error}>
@@ -63,9 +74,13 @@ export function IssueDetail(): JSX.Element {
           By {issue.author?.login ?? "unknown"} on{" "}
           {new Date(issue.createdAt).toLocaleDateString()}
         </div>
-        <p data-testid="issue-body" className={styles.body}>
-          {issue.body}
-        </p>
+        {/* GitHub sanitizes bodyHTML server-side, so no parser or sanitizer here */}
+        <div
+          ref={bodyRef}
+          data-testid="issue-body"
+          className={styles.body}
+          dangerouslySetInnerHTML={{ __html: issue.bodyHTML }}
+        />
         <a
           href={issue.url}
           className={cardStyles.viewLink}

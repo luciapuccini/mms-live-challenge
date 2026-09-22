@@ -9,7 +9,7 @@ export const GET_ISSUE = gql`
         number
         state
         createdAt
-        body
+        bodyHTML
         url
         author {
           login

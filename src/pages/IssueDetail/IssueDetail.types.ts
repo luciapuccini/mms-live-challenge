@@ -6,7 +6,8 @@ export type IssueDetailNode = {
   number: number
   state: string
   createdAt: string
-  body: string
+  /** GitHub renders and sanitizes the markdown body for us: no parser needed */
+  bodyHTML: string
   url: string
   author?: IssueAuthor | null
 }
