@@ -63,7 +63,7 @@ export function IssueList(): JSX.Element {
               </div>
               <div className={cardStyles.actions}>
                 <Link
-                  to="#"
+                  to={`/issues/${issue.number}`}
                   className={cardStyles.viewLink}
                   aria-label={`View issue ${issue.number}`}
                 >
