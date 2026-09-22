@@ -39,4 +39,11 @@ test("renders the issue of the number in the url", async () => {
 
   expect(await screen.findByText("Issue one")).toBeInTheDocument();
   expect(screen.getByTestId("issue-meta")).toHaveTextContent("#123");
+  expect(screen.getByTestId("issue-meta")).toHaveTextContent("OPEN");
+  expect(screen.getByText(/By alice on/)).toBeInTheDocument();
+  expect(screen.getByTestId("issue-body")).toHaveTextContent("Second line");
+  expect(screen.getByRole("link", { name: /github/i })).toHaveAttribute(
+    "href",
+    "https://github.com/facebook/react/issues/123",
+  );
 });

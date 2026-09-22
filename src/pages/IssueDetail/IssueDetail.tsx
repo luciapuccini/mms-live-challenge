@@ -5,6 +5,7 @@ import type { GetIssueData } from "./IssueDetail.types";
 import { Card } from "@/components/Card";
 import cardStyles from "@/components/Card/Card.module.css";
 import listStyles from "@/components/IssueList/IssueList.module.css";
+import styles from "./IssueDetail.module.css";
 
 export function IssueDetail(): JSX.Element {
   const { number } = useParams();
@@ -41,9 +42,39 @@ export function IssueDetail(): JSX.Element {
           data-testid="issue-meta"
           className={cardStyles.metaLine}
         >
-          #{issue.number}
+          #{issue.number} •{" "}
+          <span
+            className={[
+              cardStyles.metaState,
+              issue.state === "OPEN"
+                ? cardStyles.open
+                : issue.state === "CLOSED"
+                  ? cardStyles.closed
+                  : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {issue.state}
+          </span>
         </div>
         <h2>{issue.title}</h2>
+        <div className={cardStyles.byline}>
+          By {issue.author?.login ?? "unknown"} on{" "}
+          {new Date(issue.createdAt).toLocaleDateString()}
+        </div>
+        <p data-testid="issue-body" className={styles.body}>
+          {issue.body}
+        </p>
+        <a
+          href={issue.url}
+          className={cardStyles.viewLink}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`View issue ${issue.number} on GitHub (opens a new tab)`}
+        >
+          View on GitHub
+        </a>
       </div>
     </Card>
   );

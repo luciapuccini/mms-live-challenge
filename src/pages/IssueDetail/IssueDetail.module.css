@@ -1,0 +1,5 @@
+/* the body is markdown text shown as plain text: keep the line breaks */
+.body {
+  white-space: pre-wrap;
+  margin-top: var(--space-3);
+}

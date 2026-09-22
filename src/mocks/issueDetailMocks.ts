@@ -11,7 +11,12 @@ export const mocksSuccess = [
             __typename: 'Issue',
             id: '1',
             number: 123,
-            title: 'Issue one'
+            title: 'Issue one',
+            state: 'OPEN',
+            createdAt: '2023-01-01T00:00:00Z',
+            author: { __typename: 'User', login: 'alice' },
+            body: 'First line\nSecond line',
+            url: 'https://github.com/facebook/react/issues/123'
           }
         }
       }

@@ -7,6 +7,13 @@ export const GET_ISSUE = gql`
         id
         title
         number
+        state
+        createdAt
+        body
+        url
+        author {
+          login
+        }
       }
     }
   }
